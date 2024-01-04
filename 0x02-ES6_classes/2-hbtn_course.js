@@ -23,10 +23,18 @@ export default class HolbertonCourse {
     this._length = length;
   }
 
+  get length() {
+    return this._length;
+  }
+
   set students(students) {
     if (!Array.isArray(students) || !students.every((student) => typeof student === 'string')) {
       throw new TypeError('Students must be an array of Strings');
     }
     this._students = students;
+  }
+
+  get students() {
+    return this._students;
   }
 }
