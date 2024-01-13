@@ -4,7 +4,7 @@ export default function cleanSet(set, startString) {
     return '';
   }
   set.forEach((str) => {
-    if (str.startsWith(startString) && typeof str === 'string') {
+    if (typeof str === 'string' && str.startsWith(startString)) {
       RetString.push(str.slice(startString.length));
     }
   });
