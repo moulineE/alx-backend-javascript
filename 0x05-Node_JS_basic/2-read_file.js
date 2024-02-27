@@ -40,7 +40,7 @@ const getNameList = (arr, fields) => {
 
 const countStudents = (path) => {
   const file = data(path);
-  const arr = file.split('\n');
+  const arr = file.split('\n').filter((item) => item !== '');
   const fieldsDict = getField(arr);
   const fields = Object.keys(fieldsDict);
   const nameByFieldDict = getNameList(arr, fields);
