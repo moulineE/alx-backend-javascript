@@ -77,7 +77,7 @@ const app = http.createServer((req, res) => {
         res.write(Buffer.from(responseText));
       })
       .catch((err) => {
-        const responseText = `This is the list of our students\n${err.toString()}`;
+        const responseText = `This is the list of our students\n${err.message}`;
         res.setHeader('Content-Type', 'text/plain');
         res.setHeader('Content-Length', responseText.length);
         res.statusCode = 200;
