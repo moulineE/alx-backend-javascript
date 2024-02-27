@@ -3,6 +3,7 @@ const fs = require('fs');
 
 const hostname = '127.0.0.1';
 const port = 1245;
+const DB = process.argv.length > 2 ? process.argv[2] : '';
 
 const data = (path) => new Promise((resolve, reject) => {
   fs.readFile(path, 'utf8', (err, data) => {
@@ -67,7 +68,7 @@ const app = http.createServer((req, res) => {
     res.setHeader('Content-Length', responseText.length);
     res.write(Buffer.from(responseText));
   } else if (req.url === '/students') {
-    countStudents(process.argv[2])
+    countStudents(DB)
       .then((data) => {
         const responseText = `This is the list of our students\n${data}`.trim();
         res.statusCode = 200;
