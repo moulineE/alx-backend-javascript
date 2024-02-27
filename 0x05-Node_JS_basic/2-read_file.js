@@ -46,7 +46,7 @@ const countStudents = (path) => {
   const nameByFieldDict = getNameList(arr, fields);
   console.log(`Number of students: ${parseInt(arr.length, 10) - 1}`);
   for (const field of fields) {
-    console.log(`Number of students in ${field}: ${fieldsDict[field]}. List: ${nameByFieldDict[field]}`);
+    console.log(`Number of students in ${field}: ${fieldsDict[field]}. List: ${nameByFieldDict[field].join(', ')}`);
   }
 };
 
