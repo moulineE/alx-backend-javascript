@@ -74,6 +74,13 @@ const app = http.createServer((req, res) => {
         res.setHeader('Content-Length', responseText.length);
         res.setHeader('Content-Type', 'text/plain');
         res.write(Buffer.from(responseText));
+      })
+      .catch((err) => {
+        const responseText = `This is the list of our students\n${err.toString()}`;
+        res.setHeader('Content-Type', 'text/plain');
+        res.setHeader('Content-Length', responseText.length);
+        res.statusCode = 200;
+        res.write(Buffer.from(responseText));
       });
   }
 });
