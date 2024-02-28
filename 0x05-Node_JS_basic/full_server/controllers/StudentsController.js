@@ -8,10 +8,11 @@ class StudentsController {
         let output = 'This is the list of our students\n';
         for (const field in nameByFieldDict) {
           if (Object.prototype.hasOwnProperty.call(nameByFieldDict, field)) {
-            output += `Number of students in ${field}: ${nameByFieldDict[field].length()}. List: ${nameByFieldDict[field].join(', ')}\n`;
+            output += `Number of students in ${field}: ${nameByFieldDict[field].length}. List: ${nameByFieldDict[field].join(', ')}\n`;
           }
         }
-        response.status(200).send(output.join('\n'));
+        output = output.replace(/\n$/, '');
+        response.status(200).send(output);
       })
       .catch((err) => {
         response
@@ -34,9 +35,9 @@ class StudentsController {
       .then((nameByFieldDict) => {
         let output = '';
         if (Object.keys(nameByFieldDict).includes(major)) {
-          output += `List: ${nameByFieldDict[major].join(', ')}\n`;
+          output += `List: ${nameByFieldDict[major].join(', ')}`;
         }
-        response.status(200).send(output.join('\n'));
+        response.status(200).send(output);
       })
       .catch((err) => {
         response
